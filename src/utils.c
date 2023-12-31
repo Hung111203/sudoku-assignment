@@ -15,7 +15,7 @@ void init_sudoku(SudokuBoard *p_board)
         p_board->p_boxes[i] = malloc(BOARD_SIZE * sizeof(Cell *));
     }
 
-    // assign rows, cols, boxes constraint
+    
     for (int i = 0; i < BOARD_SIZE; i++)
     {
         for (int j = 0; j < BOARD_SIZE; j++)
@@ -25,7 +25,7 @@ void init_sudoku(SudokuBoard *p_board)
             p_board->p_boxes[(i / 3) * 3 + j / 3][(i % 3) * 3 + j % 3] =
                 &p_board->data[i][j];
 
-            // set row index and col index
+            
             p_board->data[i][j].row_index = i;
             p_board->data[i][j].col_index = j;
             p_board->data[i][j].box_index = (i / 3) * 3 + j / 3;
@@ -86,7 +86,6 @@ bool is_candidate(Cell *cell, int value)
 
 void set_candidates(Cell *cell, int *candidates, int size)
 {
-    // reset candidates
     for (int i = 0; i < BOARD_SIZE; i++)
     {
         cell->candidates[i] = 0;
@@ -94,7 +93,7 @@ void set_candidates(Cell *cell, int *candidates, int size)
 
     cell->num_candidates = 0;
 
-    // set candidate list
+    
     for (int i = 0; i < size; i++)
     {
         set_candidate(cell, candidates[i]);
